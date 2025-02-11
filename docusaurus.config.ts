@@ -19,7 +19,7 @@ const config: Config = {
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'Unimib Whattadata', // Usually your GitHub org/user name.
-  projectName: 'MiCare Docs', // Usually your repo name.
+  projectName: 'LLMind Docs', // Usually your repo name.
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -69,9 +69,9 @@ const config: Config = {
     // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
     navbar: {
-      title: 'MiCare Docs',
+      title: 'LLMind Docs',
       logo: {
-        alt: 'MiCare Logo',
+        alt: 'LLMind Logo',
         src: 'img/logo.svg',
       },
       items: [
