@@ -1,12 +1,12 @@
-import type {ReactNode} from 'react';
-import clsx from 'clsx';
-import Link from '@docusaurus/Link';
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import Layout from '@theme/Layout';
-import HomepageFeatures from '@site/src/components/HomepageFeatures';
-import Heading from '@theme/Heading';
+import type { ReactNode } from "react";
+import clsx from "clsx";
+import Link from "@docusaurus/Link";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import Layout from "@theme/Layout";
+import HomepageFeatures from "@site/src/components/HomepageFeatures";
+import Heading from "@theme/Heading";
 
-import styles from './index.module.css';
+import styles from "./index.module.css";
 
 import {
   Check,
@@ -47,7 +47,7 @@ export default function Home(): JSX.Element {
     >
       <main>
         <img
-          src="/llmind-docs/img/bblurry.svg"
+          src="/micare-docs/img/bblurry.svg"
           className="absolute opacity-15 -top-[45rem]"
         />
         <section className="relative z-10">
@@ -58,7 +58,7 @@ export default function Home(): JSX.Element {
             <div className="justify-center flex flex-col md:flex-row max-w-6xl gap-20 pb-2 mx-auto">
               <img
                 alt="Logo"
-                src="/llmind-docs/img/mantislogo.svg"
+                src="/micare-docs/img/mantislogo.svg"
                 className="lg:mt-0 lg:col-span-4 lg:flex w-[20rem] object-fit-cover h-auto max-w-full"
               />
               <div className="place-content-center max-w-lg pl-2">
@@ -69,7 +69,7 @@ export default function Home(): JSX.Element {
                 </p>
                 <div className="flex flex-row">
                   <a
-                    href="/llmind-docs/docs/introduction"
+                    href="/micare-docs/docs/introduction"
                     className="text-center inline-flex items-center border-none dark:bg-primaryGreen dark:text-lightBackground  hover:text-dgBackground text-dgBackground font-sm rounded-lg text-sm px-5 py-2.5 me-2 mb-2 bg-secondaryGreen font-semibold"
                   >
                     Learn more <ArrowRight className="ml-2 h-5 w-5" />{" "}
@@ -78,7 +78,8 @@ export default function Home(): JSX.Element {
                     href="https://forms.gle/oQ24aYpVZ5B8enXj8"
                     className="text-center inline-flex items-center border-none dark:bg-primaryGreen dark:text-lightBackground  hover:text-dgBackground text-dgBackground font-sm rounded-lg text-sm px-5 py-2.5 me-2 mb-2 bg-secondaryGreen font-semibold"
                   >
-                    Feedback and Features request <ExternalLink className="ml-2 h-5 w-5" />{" "}
+                    Feedback and Features request{" "}
+                    <ExternalLink className="ml-2 h-5 w-5" />{" "}
                   </a>
                   <a
                     href="https://mantistable.datai.disco.unimib.it/"
@@ -126,7 +127,7 @@ export default function Home(): JSX.Element {
               </div>
               <img
                 alt="Product screenshot"
-                src="/llmind-docs/img/mantisUI.png"
+                src="/micare-docs/img/mantisUI.png"
                 className="w-[48rem] max-w-none rounded-xl shadow-xl ring-1 ring-gray-400/10 sm:w-[57rem] md:-ml-4 lg:-ml-0"
               />
             </div>

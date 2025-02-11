@@ -14,12 +14,12 @@ const config: Config = {
   url: 'https://unimib-whattadata.github.io/',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/llmind-docs/',
+  baseUrl: '/micare-docs/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'Unimib Whattadata', // Usually your GitHub org/user name.
-  projectName: 'LLMind Docs', // Usually your repo name.
+  projectName: 'MiCare Docs', // Usually your repo name.
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -69,9 +69,9 @@ const config: Config = {
     // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
     navbar: {
-      title: 'LLMind Docs',
+      title: 'MiCare Docs',
       logo: {
-        alt: 'LLMind Logo',
+        alt: 'MiCare Logo',
         src: 'img/logo.svg',
       },
       items: [
