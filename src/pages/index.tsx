@@ -1,139 +1,314 @@
-import type { ReactNode } from "react";
-import clsx from "clsx";
-import Link from "@docusaurus/Link";
-import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-import Layout from "@theme/Layout";
-import HomepageFeatures from "@site/src/components/HomepageFeatures";
-import Heading from "@theme/Heading";
+"use client";
 
-import styles from "./index.module.css";
-
+import { useState, useEffect } from "react";
+import { motion } from "motion/react";
+import { Button } from "@site/src/components/ui/button";
 import {
-  Check,
-  ArrowRight,
-  SquarePen,
-  SquareChartGantt,
-  Blocks,
-  ExternalLink,
+  Brain,
+  Users,
+  Hospital,
+  BarChartIcon,
+  Globe,
+  HeartPulse,
+  Menu,
 } from "lucide-react";
 
-const features = [
-  {
-    name: "Friendly UI system for interacting and managing STI approaches",
-    description:
-      "We know designing a user-friendly, robust UI can be a challenge and can demand both technical prowess and design skills, that is why we developed MantisTable UI",
-    icon: SquareChartGantt,
-  },
-  {
-    name: "Visualisation of annotations",
-    description:
-      "With MantisTable UI, you can easily visualise table annotations, providing a clear and intuitive overview of your data",
-    icon: SquarePen,
-  },
-  {
-    name: "Powerful and flexible plugin system",
-    description:
-      "This incredible feature enables users to easily extend and customise its functionality, offering a seamless experience and allowing for effortless expansion and personalisation",
-    icon: Blocks,
-  },
-];
+import "@site/src/css/custom.css";
 
-export default function Home(): JSX.Element {
-  const { siteConfig } = useDocusaurusContext();
+export default function Home() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      const header = document.querySelector("header");
+      if (header) {
+        if (scrollPosition > 50) {
+          header.classList.add("bg-opacity-90", "backdrop-blur-md");
+        } else {
+          header.classList.remove("bg-opacity-90", "backdrop-blur-md");
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <Layout
-      title={`Hello from ${siteConfig.title}`}
-      description="MantisTable UI was designed to let you tame your Semantic Table Interpretation approach."
-    >
-      <main>
-        <img
-          src="/micare-docs/img/bblurry.svg"
-          className="absolute opacity-15 -top-[45rem]"
-        />
-        <section className="relative z-10">
-          <div className="place-content-center mx-4 lg:gap-12 xl:gap-12 lg:pt-10 lg:grid-cols-12 pb-12">
-            <h1 className="md:text-center pt-12 mb-4 leading-none text-gray-900 sm:text-6xl md:text-7xl lg:text-8xl dark:text-white font-bold tracking-widest">
-              MantisTable UI
+    <div className="flex flex-col min-h-screen bg-gray-900 text-white">
+      <header className="fixed w-full z-50 transition-all duration-300">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+          <div className="flex items-center">
+            <Brain className="h-8 w-8 text-purple-500 mr-2" />
+            <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">
+              MiCare
+            </span>
+          </div>
+          <nav className="hidden md:block">
+            <ul className="flex space-x-8">
+              {["Features", "Users", "Benefits", "Contact"].map((item) => (
+                <li key={item} className="list-none">
+                  <a
+                    href={`#${item.toLowerCase()}`}
+                    className="text-gray-300 hover:text-white transition-colors"
+                  >
+                    {item}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+          <Button
+            variant="ghost"
+            size="icon"
+            className="md:hidden"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            <Menu className="h-6 w-6" />
+          </Button>
+        </div>
+      </header>
+
+      {isMenuOpen && (
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          className="fixed inset-0 z-40 bg-gray-900 bg-opacity-95 md:hidden"
+        >
+          <div className="flex flex-col items-center justify-center h-full">
+            {["Features", "Users", "Benefits", "Contact"].map((item) => (
+              <a
+                key={item}
+                href={`#${item.toLowerCase()}`}
+                className="text-2xl font-bold text-white my-4"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {item}
+              </a>
+            ))}
+          </div>
+        </motion.div>
+      )}
+
+      <main className="flex-grow">
+        {/* Hero Section */}
+        <section className="relative h-screen flex items-center justify-center overflow-hidden">
+          <div className="absolute inset-0 z-0">
+            <img
+              src="/placeholder.svg"
+              alt="Abstract background"
+              className="opacity-20 object-cover"
+            />
+          </div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="relative z-10 text-center px-4 sm:px-6 lg:px-8"
+          >
+            <h1 className="text-5xl sm:text-6xl md:text-7xl font-extrabold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">
+              Revolutionizing Mental Health Care
             </h1>
-            <div className="justify-center flex flex-col md:flex-row max-w-6xl gap-20 pb-2 mx-auto">
-              <img
-                alt="Logo"
-                src="/micare-docs/img/mantislogo.svg"
-                className="lg:mt-0 lg:col-span-4 lg:flex w-[20rem] object-fit-cover h-auto max-w-full"
-              />
-              <div className="place-content-center max-w-lg pl-2">
-                <p className=" text-dgBackground dark:text-white sm:text-xl lg:mb-8 md:text-2xl lg:text-3xl">
-                  {" "}
-                  Effortless data interaction and simple table navigation with a
-                  Graphic User Interface for Semantic Table Interpretion{" "}
-                </p>
-                <div className="flex flex-row">
-                  <a
-                    href="/micare-docs/docs/introduction"
-                    className="text-center inline-flex items-center border-none dark:bg-primaryGreen dark:text-lightBackground  hover:text-dgBackground text-dgBackground font-sm rounded-lg text-sm px-5 py-2.5 me-2 mb-2 bg-secondaryGreen font-semibold"
+            <p className="text-xl mb-8 max-w-3xl mx-auto text-gray-300">
+              MiCare is a comprehensive digital ecosystem integrating technology
+              and clinical research to enhance diagnosis, monitoring, and
+              treatment of mental health disorders.
+            </p>
+            <Button
+              size="lg"
+              className="bg-purple-600 hover:bg-purple-700 text-white"
+            >
+              Get Started
+            </Button>
+          </motion.div>
+        </section>
+
+        {/* Key Features */}
+        <section id="features" className="py-20 bg-gray-800">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-3xl font-extrabold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">
+              Key Features
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {[
+                {
+                  title: "Mobile App",
+                  description: "Track symptoms and communicate with therapists",
+                  icon: HeartPulse,
+                  color: "from-green-400 to-blue-500",
+                },
+                {
+                  title: "Clinician Dashboard",
+                  description:
+                    "Monitor patients and manage therapeutic pathways",
+                  icon: BarChartIcon,
+                  color: "from-purple-400 to-pink-500",
+                },
+                {
+                  title: "AI-Powered Support",
+                  description: "Advanced clinical decision support systems",
+                  icon: Brain,
+                  color: "from-yellow-400 to-orange-500",
+                },
+                {
+                  title: "Digital Assessments",
+                  description:
+                    "Digitised psychological questionnaires and tools",
+                  icon: Users,
+                  color: "from-red-400 to-pink-500",
+                },
+                {
+                  title: "Data Sharing",
+                  description:
+                    "Facilitate research with anonymised data sharing",
+                  icon: Globe,
+                  color: "from-indigo-400 to-cyan-500",
+                },
+                {
+                  title: "Versatile Use",
+                  description:
+                    "Adaptable to various clinical and research settings",
+                  icon: Hospital,
+                  color: "from-purple-400 to-indigo-500",
+                },
+              ].map((feature, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className="bg-gray-700 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
+                >
+                  <div
+                    className={`inline-block p-3 rounded-full bg-gradient-to-r ${feature.color} mb-4`}
                   >
-                    Learn more <ArrowRight className="ml-2 h-5 w-5" />{" "}
-                  </a>
-                  <a
-                    href="https://forms.gle/oQ24aYpVZ5B8enXj8"
-                    className="text-center inline-flex items-center border-none dark:bg-primaryGreen dark:text-lightBackground  hover:text-dgBackground text-dgBackground font-sm rounded-lg text-sm px-5 py-2.5 me-2 mb-2 bg-secondaryGreen font-semibold"
-                  >
-                    Feedback and Features request{" "}
-                    <ExternalLink className="ml-2 h-5 w-5" />{" "}
-                  </a>
-                  <a
-                    href="https://mantistable.datai.disco.unimib.it/"
-                    className="text-center inline-flex items-center border-2 border-solid dark:border-primaryGreen border-secondaryGreen hover:text-dgBackground dark:text-lightBackground text-dgBackground font-sm rounded-lg text-sm px-5 py-2.5 me-2 mb-2 font-semibold"
-                  >
-                    Try it out <ExternalLink className="ml-2 h-5 w-5" />{" "}
-                  </a>
-                </div>
-              </div>
+                    <feature.icon className="h-6 w-6 text-white" />
+                  </div>
+                  <h3 className="text-xl font-semibold mb-2">
+                    {feature.title}
+                  </h3>
+                  <p className="text-gray-400">{feature.description}</p>
+                </motion.div>
+              ))}
             </div>
           </div>
         </section>
 
-        <div className="overflow-hidden dark:bg-darkBackground bg-lightBackground py-24 sm:py-32">
-          <div className="mx-auto max-w-7xl px-6 lg:px-8">
-            <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
-              <div className="flex flex-col justify-center lg:pr-8 lg:pt-4">
-                <div className="lg:max-w-lg">
-                  <h2 className="mt-2 text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
-                    An intuitive UI for Semantic Table Interpretation
-                  </h2>
-                  <p className="mt-4 text-lg leading-6 text-gray-600 dark:text-gray-300">
-                    MantisTable UI is the ultimate web interface for managing
-                    Semantic Table Interpretation (STI) approaches, providing an
-                    intuitive, ready-to-use platform tailored anyone who is
-                    interested in STI world.
-                  </p>
-                  <div className="mt-6 max-w-xl space-y-4 text-base leading-5 text-gray-600 lg:max-w-none">
-                    {features.map((feature) => (
-                      <div key={feature.name} className="relative pl-8">
-                        <div className="inline font-bold text-gray-900 dark:text-gray-300">
-                          <feature.icon
-                            aria-hidden="true"
-                            className="absolute left-1 top-1 h-5 w-5 text-primaryGreen dark:text-secondaryGreen"
-                          />
-                          {feature.name}
-                        </div>
-                        <span className="inline pl-3 text-gray-600 dark:text-gray-200">
-                          {feature.description}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-              <img
-                alt="Product screenshot"
-                src="/micare-docs/img/mantisUI.png"
-                className="w-[48rem] max-w-none rounded-xl shadow-xl ring-1 ring-gray-400/10 sm:w-[57rem] md:-ml-4 lg:-ml-0"
-              />
+        {/* User Segments */}
+        <section id="users" className="py-20 bg-gray-900">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-3xl font-extrabold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">
+              Who MiCare Supports
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {[
+                "Ultra High Risk (UHR) patients",
+                "First Episode Psychosis (FEP) patients",
+                "Individuals with personality disorders",
+                "Patients with mood and anxiety disorders",
+                "Individuals with eating disorders",
+                "Adolescents and young adults at risk",
+              ].map((segment, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className="bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
+                >
+                  <Users className="h-8 w-8 text-purple-500 mb-4" />
+                  <h3 className="text-lg font-semibold mb-2">{segment}</h3>
+                </motion.div>
+              ))}
             </div>
           </div>
-        </div>
+        </section>
+
+        {/* Benefits */}
+        <section id="benefits" className="py-20 bg-gray-800">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-3xl font-extrabold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">
+              Benefits of MiCare
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {[
+                "Personalised and accessible care",
+                "Continuous patient support",
+                "Effective monitoring to reduce hospitalisations",
+                "Optimisation of healthcare costs",
+                "Increased satisfaction for patients and therapists",
+                "Progress in mental health digitalisation",
+              ].map((benefit, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className="flex items-start"
+                >
+                  <div className="flex-shrink-0">
+                    <div className="flex items-center justify-center h-12 w-12 rounded-md bg-gradient-to-r from-purple-500 to-pink-600 text-white">
+                      {index + 1}
+                    </div>
+                  </div>
+                  <div className="ml-4">
+                    <p className="text-lg font-medium text-gray-300">
+                      {benefit}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Call to Action */}
+        <section className="relative py-20 overflow-hidden">
+          <div className="absolute inset-0 z-0">
+            <img
+              src="/placeholder.svg"
+              alt="Abstract background"
+              className="opacity-20 object-cover"
+            />
+          </div>
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              <h2 className="text-3xl font-extrabold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">
+                Ready to transform mental health care?
+              </h2>
+              <p className="text-xl mb-8 text-gray-300">
+                Join MiCare and be part of the future of mental health support.
+              </p>
+              <Button
+                size="lg"
+                className="bg-gradient-to-r from-purple-500 to-pink-600 hover:from-purple-600 hover:to-pink-700 text-white"
+              >
+                Get Started Now
+              </Button>
+            </motion.div>
+          </div>
+        </section>
       </main>
-    </Layout>
+
+      <footer className="bg-gray-900 text-gray-400">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <div className="flex flex-col md:flex-row justify-between items-center">
+            <div className="flex items-center mb-4 md:mb-0">
+              <Brain className="h-8 w-8 text-purple-500 mr-2" />
+              <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">
+                MiCare
+              </span>
+            </div>
+            <p>&copy; 2025 MiCare. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
+    </div>
   );
 }
