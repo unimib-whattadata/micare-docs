@@ -15,7 +15,7 @@ export default function Home() {
   return (
     <div
       ref={wrapper}
-      className="flex flex-col h-screen bg-gray-900 text-white overflow-y-scroll relative"
+      className="h-screen bg-gray-900 text-white overflow-y-scroll relative"
     >
       <PageHeader wrapper={wrapper} />
 

@@ -1,11 +1,11 @@
 import { Brain, Menu as MenuIcon, X as XIcon } from "lucide-react";
 import { Button } from "@site/src/components/ui/button";
 import { useEffect, useState } from "react";
-import { AnimatePresence, isMotionComponent, motion } from "motion/react";
+import { AnimatePresence, motion, useAnimationControls } from "motion/react";
 import { cn } from "../lib/utils";
 
-const Menu = motion(MenuIcon);
-const X = motion(XIcon);
+const Menu = motion.create(MenuIcon);
+const X = motion.create(XIcon);
 
 export default function PageHeader(props: {
   wrapper: React.MutableRefObject<HTMLDivElement>;
@@ -17,9 +17,35 @@ export default function PageHeader(props: {
     isMenuOpen && wrapper.current.classList.add("overflow-hidden");
   }, [isMenuOpen, wrapper]);
 
+  const variants = {
+    bgVisible: {
+      backgroundImage: "radial-gradient(transparent 1px, rgba(0, 0, 0, 1) 1px)",
+    },
+    bgHidden: {
+      backgroundImage: "radial-gradient(transparent 1px, rgba(0, 0, 0, 0) 1px)",
+    },
+  };
+
+  const controls = useAnimationControls();
+
+  const toggleMenu = () => {
+    setIsMenuOpen((prev) => !prev);
+    controls.start(isMenuOpen ? "bgVisible" : "bgHidden");
+  };
+
   return (
     <>
-      <header className="sticky top-0 w-full z-50 transition-all duration-300 bg-dots">
+      <motion.header
+        initial="bgVisible"
+        variants={variants}
+        animate={controls}
+        transition={{
+          type: "spring",
+          visualDuration: 0.2,
+          bounce: 0.2,
+        }}
+        className="sticky top-0 w-full z-50 duration-300 bg-dots"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
           <div className="flex items-center">
             <Brain className="h-8 w-8 text-purple-500 mr-2" />
@@ -44,17 +70,13 @@ export default function PageHeader(props: {
           <Button
             size="icon"
             className={cn(
-              "md:hidden overflow-clip flex flex-col items-center p-2",
+              "md:hidden overflow-clip flex flex-col items-center py-2.5",
               isMenuOpen ? "justify-start" : "justify-end"
             )}
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            onClick={toggleMenu}
           >
             <X
               layout
-              key="x"
-              initial={false}
-              animate={{ y: 0 }}
-              exit={{ y: 20 }}
               transition={{
                 type: "spring",
                 visualDuration: 0.2,
@@ -73,7 +95,7 @@ export default function PageHeader(props: {
             />
           </Button>
         </div>
-      </header>
+      </motion.header>
 
       <AnimatePresence>
         {isMenuOpen && (
@@ -84,13 +106,13 @@ export default function PageHeader(props: {
             exit={{ opacity: 0, y: -20 }}
             className="fixed inset-0 z-40 bg-gray-900 bg-opacity-95 md:hidden"
           >
-            <div className="flex flex-col items-center justify-center h-full">
+            <div className="flex flex-col items-center justify-center h-full bg-dots">
               {["Features", "Users", "Benefits", "Contact"].map((item) => (
                 <a
                   key={item}
                   href={`#${item.toLowerCase()}`}
                   className="text-2xl font-bold text-white my-4"
-                  onClick={() => setIsMenuOpen(false)}
+                  onClick={toggleMenu}
                 >
                   {item}
                 </a>
