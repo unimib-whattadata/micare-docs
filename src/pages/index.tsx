@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion } from "motion/react";
 import { Button } from "@site/src/components/ui/button";
 import {
@@ -17,10 +17,11 @@ import "@site/src/css/custom.css";
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const wrapper = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY;
+      const scrollPosition = wrapper.current.scrollTop;
       const header = document.querySelector("header");
       if (header) {
         if (scrollPosition > 50) {
@@ -31,13 +32,15 @@ export default function Home() {
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    wrapper.current.addEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <div className="flex flex-col min-h-screen bg-gray-900 text-white">
-      <header className="fixed w-full z-50 transition-all duration-300">
+    <div
+      ref={wrapper}
+      className="flex flex-col h-screen bg-gray-900 text-white overflow-y-scroll overflow-x-clip relative -top-[2px]"
+    >
+      <header className="sticky top-0 w-full z-50 transition-all duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
           <div className="flex items-center">
             <Brain className="h-8 w-8 text-purple-500 mr-2" />
@@ -94,35 +97,30 @@ export default function Home() {
 
       <main className="flex-grow">
         {/* Hero Section */}
-        <section className="relative h-screen flex items-center justify-center overflow-hidden">
-          <div className="absolute inset-0 z-0">
-            <img
-              src="/placeholder.svg"
-              alt="Abstract background"
-              className="opacity-20 object-cover"
-            />
-          </div>
+        <section className="relative max-w-7xl mx-auto h-screen items-center grid sm:grid-cols-[3fr_1fr_2fr] md:grid-cols-[2fr_1fr_2fr] sm:grid-rows-1 overflow-x-clip">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="relative z-10 text-center px-4 sm:px-6 lg:px-8"
+            className="relative z-10 px-4 sm:px-6 lg:px-8 sm:col-start-1 sm:col-end-3 sm:row-start-1 sm:row-end-2"
           >
-            <h1 className="text-5xl sm:text-6xl md:text-7xl font-extrabold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">
+            <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">
               Revolutionizing Mental Health Care
             </h1>
-            <p className="text-xl mb-8 max-w-3xl mx-auto text-gray-300">
+            <p className="text-xl mb-8 text-gray-300">
               MiCare is a comprehensive digital ecosystem integrating technology
               and clinical research to enhance diagnosis, monitoring, and
               treatment of mental health disorders.
             </p>
-            <Button
-              size="lg"
-              className="bg-purple-600 hover:bg-purple-700 text-white"
-            >
-              Get Started
-            </Button>
+            <Button size="lg">Get Started</Button>
           </motion.div>
+          <div className="sm:col-start-2 sm:col-end-4 sm:row-start-1 sm:row-end-2 sm:left-0 sm:absolute sm:overflow-x-clip lg:overflow-x-auto inset-0 grid place-items-center lg:justify-center">
+            <img
+              src="/micare-docs/img/preview.png"
+              alt="Abstract background"
+              className="opacity-35 object-cover sm:max-w-none lg:max-w-full sm:max-h-[40rem] relative lg:-right-[5.3rem]"
+            />
+          </div>
         </section>
 
         {/* Key Features */}
