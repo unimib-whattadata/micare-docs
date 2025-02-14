@@ -69,11 +69,10 @@
     --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
   }
 
-  * {
-    @apply border-border;
-  }
   body,
   html {
     @apply font-sans antialiased bg-background text-foreground scroll-smooth;
   }
 }
+
+/* bg-transparent [background-image:radial-gradient(transparent_1px,#000_1px)] [background-size:4px_4px] backdrop-blur-sm [mask:linear-gradient(#000_60%,transparent)] */
