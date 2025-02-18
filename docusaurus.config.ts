@@ -82,7 +82,7 @@ const config: Config = {
 
   themeConfig: {
     // Replace with your project's social card
-    image: "/thumbnail.png",
+    image: "/thumbnail.jpg",
     navbar: {
       title: "MiCare",
       logo: {
