@@ -5,7 +5,6 @@ import "@site/src/css/custom.css";
 import PageHeader from "@site/src/components/page-header";
 import Hero from "@site/src/components/hero";
 import KeyFeatures from "@site/src/components/key-features";
-import UserSegments from "@site/src/components/user-segments";
 import Benefits from "@site/src/components/benefits";
 import Cta from "@site/src/components/cta";
 import { ThemeProvider } from "../context/theme";
@@ -26,7 +25,6 @@ export default function Home() {
           <Hero />
           <Overview />
           <KeyFeatures />
-          {/* <UserSegments /> */}
           <Benefits />
           <Cta />
         </main>

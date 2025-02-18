@@ -2,12 +2,6 @@ import { Moon as MoonIcon, Sun as SunIcon } from "lucide-react";
 import { motion } from "motion/react";
 
 import { Button } from "@site/src/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@site/src/components/ui/dropdown-menu";
 import { useEffect } from "react";
 import { useTheme } from "../context/theme";
 import { cn } from "../lib/utils";

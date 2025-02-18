@@ -1,23 +1,4 @@
-import {
-  BarChartIcon,
-  Brain,
-  Globe,
-  HeartPulse,
-  Hospital,
-  Users,
-} from "lucide-react";
 import { motion } from "motion/react";
-import { cn } from "@site/src/lib/utils";
-import {
-  Card as CardComponent,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@site/src/components/ui/card";
-
-const Card = motion.create(CardComponent);
 
 export default function Overview() {
   return (
@@ -26,7 +7,12 @@ export default function Overview() {
         <h2 className="text-3xl font-extrabold text-center mb-12 bg-clip-text text-transparent bg-gradient">
           Overview
         </h2>
-        <p className="md:columns-2 md:gap-8">
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="md:columns-2 md:gap-8"
+        >
           MiCare combines a mobile application and a web dashboard to enable
           effective communication between patients and clinicians. The mobile
           application allows patients to monitor symptoms and communicate with
@@ -36,7 +22,7 @@ export default function Overview() {
           artificial intelligence algorithms assist in clinical decision-making,
           aiding in the detection of significant events during therapy and
           providing support for diagnostic processes.
-        </p>
+        </motion.p>
       </div>
     </section>
   );

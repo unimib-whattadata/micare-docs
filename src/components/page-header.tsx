@@ -1,10 +1,9 @@
-import { Brain, Menu as MenuIcon, Sun, X as XIcon } from "lucide-react";
+import { Brain, Menu as MenuIcon, X as XIcon } from "lucide-react";
 import { Button } from "@site/src/components/ui/button";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useAnimationControls } from "motion/react";
 import { cn } from "@site/src/lib/utils";
 import ThemeToggle from "./theme-toggle";
-import { Separator } from "./ui/separator";
 
 const Menu = motion.create(MenuIcon);
 const X = motion.create(XIcon);

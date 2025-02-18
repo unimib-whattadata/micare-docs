@@ -10,9 +10,7 @@ import { motion } from "motion/react";
 import { cn } from "@site/src/lib/utils";
 import {
   Card as CardComponent,
-  CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@site/src/components/ui/card";

@@ -1,14 +1,7 @@
 import { motion } from "motion/react";
 import { Mail } from "lucide-react";
 import { Button } from "@site/src/components/ui/button";
-import {
-  Card as CardComponent,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@site/src/components/ui/card";
+import { Card as CardComponent } from "@site/src/components/ui/card";
 
 const Card = motion.create(CardComponent);
 
@@ -19,13 +12,18 @@ export default function Cta() {
         <h2 className="text-3xl font-extrabold bg-clip-text text-transparent bg-gradient text-center md:col-span-2">
           Further Information and Collaborative Opportunities
         </h2>
-        <p className="mb-0">
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="mb-0"
+        >
           If you are interested in further details regarding the research
           methodologies, technological innovations, or clinical applications
           integrated within the MiCare project, we welcome your inquiries. Our
           team is eager to engage with academics, clinicians, and other
           professionals in the field of mental health
-        </p>
+        </motion.p>
         <div className="w-full flex flex-col justify-center">
           <Card
             initial={{ opacity: 0, y: 20 }}
