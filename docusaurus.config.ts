@@ -81,40 +81,8 @@ const config: Config = {
   ],
 
   themeConfig: {
-    metadata: [
-      { property: "og:type", content: "website" },
-      {
-        property: "og:url",
-        content: "https://unimib-whattadata.github.io/micare-docs/",
-      },
-      { property: "og:title", content: "MiCare" },
-      {
-        property: "og:description",
-        content: "A Digital Ecosystem for Mental Health",
-      },
-      {
-        property: "og:image",
-        content:
-          "https://github.com/unimib-whattadata/micare-docs/blob/main/thumbnail.png",
-      },
-      { property: "twitter:card", content: "summary_large_image" },
-      {
-        property: "twitter:url",
-        content: "https://unimib-whattadata.github.io/micare-docs/",
-      },
-      { property: "twitter:title", content: "MiCare" },
-      {
-        property: "twitter:description",
-        content: "A Digital Ecosystem for Mental Health",
-      },
-      {
-        property: "twitter:image",
-        content:
-          "https://github.com/unimib-whattadata/micare-docs/blob/main/thumbnail.png",
-      },
-    ],
     // Replace with your project's social card
-    image: "img/docusaurus-social-card.jpg",
+    image: "/thumbnail.png",
     navbar: {
       title: "MiCare",
       logo: {
