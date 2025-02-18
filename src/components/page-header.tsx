@@ -5,6 +5,8 @@ import { AnimatePresence, motion, useAnimationControls } from "motion/react";
 import { cn } from "@site/src/lib/utils";
 import ThemeToggle from "./theme-toggle";
 
+// TODO: Documentation -> "Learn More"
+
 const Menu = motion.create(MenuIcon);
 const X = motion.create(XIcon);
 

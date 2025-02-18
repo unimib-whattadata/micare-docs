@@ -6,6 +6,8 @@ import { useEffect } from "react";
 import { useTheme } from "../context/theme";
 import { cn } from "../lib/utils";
 
+// XXX: Theme is not persisted over sessions
+
 const Moon = motion.create(MoonIcon);
 const Sun = motion.create(SunIcon);
 
