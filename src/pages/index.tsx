@@ -9,42 +9,47 @@ import Benefits from "@site/src/components/benefits";
 import Cta from "@site/src/components/cta";
 import { ThemeProvider } from "../context/theme";
 import Overview from "../components/overview";
+import BrowserOnly from "@docusaurus/BrowserOnly";
 
 export default function Home() {
   const wrapper = useRef<HTMLDivElement>(null);
 
   return (
-    <ThemeProvider>
-      <div
-        ref={wrapper}
-        className="min-h-screen bg-background text-foreground relative"
-      >
-        <PageHeader />
+    <BrowserOnly>
+      {() => (
+        <ThemeProvider>
+          <div
+            ref={wrapper}
+            className="min-h-screen bg-background text-foreground relative"
+          >
+            <PageHeader />
 
-        <main className="flex-grow">
-          <Hero />
-          <Overview />
-          <KeyFeatures />
-          <Benefits />
-          <Cta />
-        </main>
+            <main className="flex-grow">
+              <Hero />
+              <Overview />
+              <KeyFeatures />
+              <Benefits />
+              <Cta />
+            </main>
 
-        <footer className="bg-dots-fade-t text-primary">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-            <div className="flex flex-col md:flex-row justify-between items-center">
-              <div className="flex items-center mb-4 md:mb-0">
-                <Brain className="h-6 w-6 text-accent mr-2" />
-                <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient">
-                  MiCare
-                </span>
+            <footer className="bg-dots-fade-t text-primary">
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+                <div className="flex flex-col md:flex-row justify-between items-center">
+                  <div className="flex items-center mb-4 md:mb-0">
+                    <Brain className="h-6 w-6 text-accent mr-2" />
+                    <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient">
+                      MiCare
+                    </span>
+                  </div>
+                  <span>
+                    Copyright © {new Date().getFullYear()} Whattadata srl.
+                  </span>
+                </div>
               </div>
-              <span>
-                Copyright © {new Date().getFullYear()} Whattadata srl.
-              </span>
-            </div>
+            </footer>
           </div>
-        </footer>
-      </div>
-    </ThemeProvider>
+        </ThemeProvider>
+      )}
+    </BrowserOnly>
   );
 }

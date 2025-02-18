@@ -69,7 +69,7 @@ export default function PageHeader() {
               ))}
               <li className="list-none flex items-center">
                 <a
-                  href="/micare-docs/docs/getting-started/"
+                  href="/micare-docs/docs/getting-started/#installation-instructions"
                   className="text-foreground hover:text-accent !no-underline"
                 >
                   Documentation

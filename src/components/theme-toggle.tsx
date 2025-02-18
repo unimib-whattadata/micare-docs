@@ -5,7 +5,6 @@ import { Button } from "@site/src/components/ui/button";
 import { useEffect } from "react";
 import { useTheme } from "../context/theme";
 import { cn } from "../lib/utils";
-import BrowserOnly from "@docusaurus/BrowserOnly";
 
 const Moon = motion.create(MoonIcon);
 const Sun = motion.create(SunIcon);
@@ -27,41 +26,37 @@ export default function ThemeToggle(props: Props) {
   };
 
   return (
-    <BrowserOnly>
-      {() => (
-        <Button
-          size="icon"
-          variant="outline"
-          className={cn(
-            "overflow-clip flex flex-col items-center py-2.5 bg transition-all",
-            theme === "dark"
-              ? "justify-start [&_svg]:mb-1"
-              : "justify-end [&_svg]:mt-1",
-            props.className
-          )}
-          onClick={toggleTheme}
-        >
-          <Moon
-            layout
-            transition={{
-              type: "spring",
-              visualDuration: 0.2,
-              bounce: 0.2,
-            }}
-            className="h-6 w-6"
-          />
-          <Sun
-            layout
-            transition={{
-              type: "spring",
-              visualDuration: 0.2,
-              bounce: 0.2,
-            }}
-            className="h-6 w-6"
-          />
-          <span className="sr-only">Toggle theme</span>
-        </Button>
+    <Button
+      size="icon"
+      variant="outline"
+      className={cn(
+        "overflow-clip flex flex-col items-center py-2.5 bg transition-all",
+        theme === "dark"
+          ? "justify-start [&_svg]:mb-1"
+          : "justify-end [&_svg]:mt-1",
+        props.className
       )}
-    </BrowserOnly>
+      onClick={toggleTheme}
+    >
+      <Moon
+        layout
+        transition={{
+          type: "spring",
+          visualDuration: 0.2,
+          bounce: 0.2,
+        }}
+        className="h-6 w-6"
+      />
+      <Sun
+        layout
+        transition={{
+          type: "spring",
+          visualDuration: 0.2,
+          bounce: 0.2,
+        }}
+        className="h-6 w-6"
+      />
+      <span className="sr-only">Toggle theme</span>
+    </Button>
   );
 }
