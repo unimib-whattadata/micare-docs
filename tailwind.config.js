@@ -6,7 +6,7 @@ module.exports = {
     preflight: false,
     container: false,
   },
-  darkMode: ["class", '[data-theme="dark"]'],
+  darkMode: ["selector", '[data-theme="dark"]'],
   content: ["./src/**/*.{jsx,tsx,html}"],
   theme: {
     extend: {
@@ -44,6 +44,11 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        gradient: {
+          from: "hsl(var(--gradient-from))",
+          to: "hsl(var(--gradient-to))",
+        },
+        "dots-color": "hsl(var(--dots))",
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -76,49 +81,67 @@ module.exports = {
   },
   plugins: [
     require("tailwindcss-animate"),
-    plugin(function ({ addComponents, matchUtilities }) {
+    plugin(function ({ addComponents, theme }) {
       addComponents({
         ".bg-dots": {
           backgroundColor: "transparent",
-          backgroundImage: "radial-gradient(transparent 1px, #000 1px)",
+          backgroundImage: `radial-gradient(transparent 1px, ${theme("colors.dots-color")} 1px)`,
           backgroundSize: "4px 4px",
           backdropFilter: "blur(3px)",
           mask: "linear-gradient(#000 60%, transparent)",
         },
-      });
-      addComponents({
-        ".bg-dots-fade-y": {
-          backgroundColor: "transparent",
-          backgroundImage: "radial-gradient(transparent 1px, #000 1px)",
-          backgroundSize: "4px 4px",
-          backdropFilter: "blur(3px)",
-          mask: "linear-gradient(transparent, #000 60%, transparent)",
-        },
-      });
-      addComponents({
-        ".bg-dots-section-fade-y": {
+        ".bg-dots-section": {
           position: "relative",
           zIndex: "1",
+          backdropFilter: "blur(3px)",
           "&:before": {
             content: '""',
             position: "absolute",
             inset: "0",
             zIndex: "-1",
             backgroundColor: "transparent",
-            backgroundImage: "radial-gradient(transparent 1px, #000 1px)",
+            backgroundImage: `radial-gradient(transparent 1px, ${theme("colors.dots-color")} 1px)`,
             backgroundSize: "4px 4px",
-            backdropFilter: "blur(3px)",
             mask: "linear-gradient(transparent, #000 60%, transparent)",
           },
         },
-      });
-      addComponents({
-        ".bg-dots-fade-t": {
+        ".bg-dots-fade-y": {
           backgroundColor: "transparent",
-          backgroundImage: "radial-gradient(transparent 1px, #000 1px)",
+          backgroundImage: `radial-gradient(transparent 1px, ${theme("colors.dots-color")} 1px)`,
           backgroundSize: "4px 4px",
           backdropFilter: "blur(3px)",
-          mask: "linear-gradient(transparent 60%, #000)",
+          mask: "linear-gradient(transparent, #000 60%, transparent)",
+        },
+        ".bg-dots-section-fade-y": {
+          position: "relative",
+          zIndex: "1",
+          backdropFilter: "blur(3px)",
+          "&:before": {
+            content: '""',
+            position: "absolute",
+            inset: "0",
+            zIndex: "-1",
+            backgroundColor: "transparent",
+            backgroundImage: `radial-gradient(transparent 1px, ${theme("colors.dots-color")} 1px)`,
+            backgroundSize: "4px 4px",
+            mask: "linear-gradient(transparent, #000 60%, transparent)",
+          },
+        },
+        ".bg-dots-fade-t": {
+          backgroundColor: "transparent",
+          backgroundImage: `radial-gradient(transparent 1px, ${theme("colors.dots-color")} 1px)`,
+          backgroundSize: "4px 4px",
+          backdropFilter: "blur(3px)",
+          mask: "linear-gradient(to top, #000 60%, transparent)",
+        },
+      });
+
+      addComponents({
+        ".bg-gradient": {
+          backgroundImage: `linear-gradient(90deg, ${theme("colors.gradient.from")} 0%, ${theme("colors.gradient.to")} 50%)`,
+        },
+        ".bg-gradient-hover": {
+          backgroundImage: `linear-gradient(90deg, ${theme("colors.gradient.from")} 0%, ${theme("colors.gradient.to")} 50%)`,
         },
       });
     }),

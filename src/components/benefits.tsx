@@ -13,7 +13,7 @@ export default function Benefits() {
   return (
     <section id="benefits" className="py-20 bg-dots-section-fade-y">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl font-extrabold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">
+        <h2 className="text-3xl font-extrabold text-center mb-12 bg-clip-text text-transparent bg-gradient">
           Benefits of MiCare
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -26,11 +26,11 @@ export default function Benefits() {
               className="flex items-center gap-4"
             >
               <div className="flex-shrink-0">
-                <div className="flex items-center justify-center h-12 w-12 rounded-md bg-gradient-to-r from-purple-500 to-pink-600 text-white">
+                <div className="flex items-center justify-center h-12 w-12 rounded-md bg-gradient text-white">
                   {index + 1}
                 </div>
               </div>
-              <span className="text-lg font-medium text-gray-300">
+              <span className="text-lg font-medium text-primary">
                 {benefit}
               </span>
             </motion.div>

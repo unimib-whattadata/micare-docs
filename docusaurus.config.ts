@@ -40,8 +40,8 @@ const config: Config = {
           sidebarPath: './sidebars.ts',
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          // editUrl:
+          //   'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
           remarkPlugins: [
             [require('@docusaurus/remark-plugin-npm2yarn'), {sync: true, converters: ['pnpm', 'yarn', 'bun']}],
           ],
@@ -78,29 +78,29 @@ const config: Config = {
     // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
     navbar: {
-      title: 'MiCare Docs',
+      title: 'MiCare',
       logo: {
         alt: 'MiCare Logo',
         src: 'img/logo.svg',
       },
-      items: [
-        {
-          type: 'docSidebar',
-          sidebarId: 'tutorialSidebar',
-          position: 'left',
-          label: 'Documentation',
-        },
-        {
-          href: 'https://unimib-datai.github.io/sti-website/',
-          label: 'Our works',
-          position: 'right',
-        },
-        {
-          href: 'https://github.com/facebook/docusaurus',
-          label: 'GitHub',
-          position: 'right',
-        },
-      ],
+      // items: [
+      //   {
+      //     type: 'docSidebar',
+      //     sidebarId: 'tutorialSidebar',
+      //     position: 'left',
+      //     label: 'Documentation',
+      //   },
+      //   {
+      //     href: 'https://unimib-datai.github.io/sti-website/',
+      //     label: 'Our works',
+      //     position: 'right',
+      //   },
+      //   {
+      //     href: 'https://github.com/facebook/docusaurus',
+      //     label: 'GitHub',
+      //     position: 'right',
+      //   },
+      // ],
     },
     footer: {
       style: 'dark',
