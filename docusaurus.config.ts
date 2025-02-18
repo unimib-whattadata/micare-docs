@@ -6,8 +6,8 @@ import tailwindPlugin from './plugins/tailwind-plugin.cjs';
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
-  title: 'My Site',
-  tagline: 'Dinosaurs are cool',
+  title: 'MiCare',
+  tagline: 'A Digital Ecosystem for Mental Health',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
