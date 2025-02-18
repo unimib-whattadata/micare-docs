@@ -95,7 +95,7 @@ const config: Config = {
       {
         property: "og:image",
         content:
-          "https://unimib-whattadata.github.io/micare-docs/img/micare-docs-preview.png",
+          "https://github.com/unimib-whattadata/micare-docs/blob/main/thumbnail.png",
       },
       { property: "twitter:card", content: "summary_large_image" },
       {
@@ -110,7 +110,7 @@ const config: Config = {
       {
         property: "twitter:image",
         content:
-          "https://unimib-whattadata.github.io/micare-docs/img/micare-docs-preview.png",
+          "https://github.com/unimib-whattadata/micare-docs/blob/main/thumbnail.png",
       },
     ],
     // Replace with your project's social card
